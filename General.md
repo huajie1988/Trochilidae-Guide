@@ -1,6 +1,6 @@
 # Trochilidae Doc
 
-##关于Trochilidae
+## 关于Trochilidae
 
 ### 什么是Trochilidae
 
@@ -14,7 +14,7 @@ Trochilidae是一个现代化、轻量级的基于组件的PHP框架，主要适
 
 - PHP version >= 7.0 
 
-#安装Trochilidae
+# 安装Trochilidae
 
 ## 安装 Composer
 
@@ -322,11 +322,11 @@ class BaseController extends Controller
 
 Trochilidae继承了Medoo的数据库操作，并在此基础上增加了一些自己的操作，因此可以使用两种方法来操作数据库。
 
-###使用Model类
+### 使用Model类
 
 Model类是完全继承Medoo类的，因此Medoo类中的所有操作都是可以执行的，例如select ，update 等，具体可以参看[Medoo官网](https://medoo.in/)
 
-###使用ORM
+### 使用ORM
 
 以下假设以操作user表为例
 
@@ -670,7 +670,7 @@ Trochilidae中只有o2o和o2m两种关系，m2m可以视为o2m的扩展，因此
 
 ```php
 		$entity=new Entity();
-        $result=$entity->doMapping('HomeBundle\UserMapping\updateUser',['user_name'=>'huajie','status'=>1]);
+		$result=$entity->doMapping('HomeBundle\UserMapping\updateUser',['user_name'=>'huajie','status'=>1]);
 
 ```
 
@@ -685,10 +685,10 @@ Trochilidae本身是不做事务处理的，但你可以在继承的Model类中�
 ```php
      public function save(User $user)
      {
-         $this->pdo->beginTransaction();
+		$this->pdo->beginTransaction();
 		// do something
-         $this->pdo->commit();
-         return $user;
+		$this->pdo->commit();
+		return $user;
      }
 ```
 
@@ -711,7 +711,7 @@ Trochilidae本身是不做事务处理的，但你可以在继承的Model类中�
 		if($result==SUCCESS)
 			$entity->commit();
 		else
-            $entity->rollback();
+			$entity->rollback();
 ```
 
 > **beginTransaction方法必须在get之后使用**
@@ -729,10 +729,10 @@ Trochilidae本身是不做事务处理的，但你可以在继承的Model类中�
 		$entity2=$entity2->get('File@HomeBundle');  // is right
 		// do something
 		if($result==SUCCESS)
-             $entity2->commit();  // error 
+			$entity2->commit();  // error 
 			$entity->commit();   // right
 		else
-            $entity->rollback();
+			$entity->rollback();
 ```
 
 
@@ -809,6 +809,9 @@ Trochilidae本身是不做事务处理的，但你可以在继承的Model类中�
 Trochilidae提供了一些内置的命令行，它可以帮助你更好的完成你的项目，主要有如下几个
 
 createEntity <path|file>：生成Entity实体类
+
 updateDataBase：更新数据库结构
+
 clear：清除缓存和路由表
+
 suggest：检测你的代码，并提出可优化的地方。
